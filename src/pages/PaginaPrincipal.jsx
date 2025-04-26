@@ -4,30 +4,37 @@ import HeaderBienvenida from '../components/HeaderBienvenida';
 import Footer from '../components/Footer';
 import Main from '../components/Main';
 
+const PaginaPrincipal = ({ alumno1, alumnoL, alumnoc, alumnoN }) => {
+	const [usuarioVerificacion, setUsuarioVerificacion] = useState(false);
 
-const PaginaPrincipal = ({alumno1, alumnoL,alumnoc}) => {
+	const Verificado = () => {
+		setUsuarioVerificacion(true);
+	};
 
-    const [usuarioVerificacion, setUsuarioVerificacion] = useState(false);
+	const handleLogout = () => {
+		setUsuarioVerificacion(false);
+	};
 
-    const Verificado = () => {
-        setUsuarioVerificacion(true);
-    }
+	const alumnos = [alumno1, alumnoL, alumnoc, alumnoN];
 
-    const handleLogout = () => {
-        setUsuarioVerificacion(false);
-    };
+	return (
+		<div>
+			{usuarioVerificacion ? (
+				<HeaderBienvenida onLogout={handleLogout} />
+			) : (
+				<HeaderInicioSesion />
+			)}
+			<Main
+				usuarioVerificacion={usuarioVerificacion}
+				Verificado={Verificado}
+				alumno1={alumno1}
+				alumnoL={alumnoL}
+				alumnoc={alumnoc}
+				alumnoN={alumnoN}
+			/>
+			<Footer alumnos={alumnos} />
+		</div>
+	);
+};
 
-    const alumnos = [alumno1, alumnoL,alumnoc];
-
-    return (
-        <div>
-
-            {usuarioVerificacion ? <HeaderBienvenida onLogout={handleLogout} /> : <HeaderInicioSesion />}
-            <Main usuarioVerificacion={usuarioVerificacion} Verificado={Verificado} alumno1={alumno1} alumnoL={alumnoL} alumnog={alumnoc}/>
-            <Footer alumnos={alumnos} />
-
-        </div>
-    )
-}
-
-export default PaginaPrincipal
+export default PaginaPrincipal;
