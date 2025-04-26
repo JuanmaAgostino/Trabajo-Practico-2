@@ -10,6 +10,7 @@ const Main = ({
 	alumnoL,
 	alumnoc,
 	alumnoN,
+	alumnoLu
 }) => {
 	console.log(usuarioVerificacion);
 	console.log(Verificado);
@@ -22,6 +23,7 @@ const Main = ({
 						alumnoL={alumnoL}
 						alumnoc={alumnoc}
 						alumnoN={alumnoN}
+						alumnoLu={alumnoLu}
 					/>
 				) : (
 					<Formulario Verificado={Verificado} />

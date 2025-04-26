@@ -4,7 +4,7 @@ import HeaderBienvenida from '../components/HeaderBienvenida';
 import Footer from '../components/Footer';
 import Main from '../components/Main';
 
-const PaginaPrincipal = ({ alumno1, alumnoL, alumnoc, alumnoN }) => {
+const PaginaPrincipal = ({ alumno1, alumnoL, alumnoc, alumnoN, alumnoLu }) => {
 	const [usuarioVerificacion, setUsuarioVerificacion] = useState(false);
 
 	const Verificado = () => {
@@ -15,7 +15,7 @@ const PaginaPrincipal = ({ alumno1, alumnoL, alumnoc, alumnoN }) => {
 		setUsuarioVerificacion(false);
 	};
 
-	const alumnos = [alumno1, alumnoL, alumnoc, alumnoN];
+	const alumnos = [alumno1, alumnoL, alumnoc, alumnoN, alumnoLu];
 
 	return (
 		<div>
@@ -31,6 +31,7 @@ const PaginaPrincipal = ({ alumno1, alumnoL, alumnoc, alumnoN }) => {
 				alumnoL={alumnoL}
 				alumnoc={alumnoc}
 				alumnoN={alumnoN}
+				alumnoLu={alumnoLu}
 			/>
 			<Footer alumnos={alumnos} />
 		</div>

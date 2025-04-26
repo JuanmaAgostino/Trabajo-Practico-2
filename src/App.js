@@ -32,6 +32,14 @@ function App() {
 		foto: 'fotoNicolas.jpeg',
 	};
 
+	const alumnoLu = {
+		nombre: 'Luciano Agustin',
+		apellido: 'Llanos',
+		legajo: 61911,
+		github: 'https://github.com/LucianoLlanos',
+		foto: 'fotoLuciano.jpeg',
+	};
+
 	return (
 		<div>
 			<PaginaPrincipal
@@ -39,6 +47,7 @@ function App() {
 				alumnoL={alumnoL}
 				alumnoc={alumnoc}
 				alumnoN={alumnoN}
+				alumnoLu={alumnoLu}
 			/>
 		</div>
 	);
