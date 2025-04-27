@@ -1,7 +1,7 @@
 import React from 'react';
 import css from '../style/Integrantes.css';
 
-const Integrantes = ({ alumno1, alumnoL, alumnoc, alumnoN, alumnoLu }) => {
+const Integrantes = ({ alumno1, alumnoL, alumnoc, alumnoN, alumnoLu, alumnoF}) => {
 	return (
 		<body>
 			<div className="contenedor">
@@ -95,6 +95,24 @@ const Integrantes = ({ alumno1, alumnoL, alumnoc, alumnoN, alumnoLu }) => {
 								<img
 									src={require(`../resources/${alumnoN.foto}`)}
 									alt="foto alumno Nicolas"
+								/>
+							</figure>
+						</li>
+					</ul>
+				</div>
+				<div className="tarjeta">
+					<ul>
+						<li>{alumnoF.nombre}</li>
+						<li>{alumnoF.apellido}</li>
+						<li>{alumnoF.legajo}</li>
+						<li>
+							<a href={alumnoF.github}>Github</a>
+						</li>
+						<li>
+							<figure>
+								<img
+									src={require(`../resources/${alumnoF.foto}`)}
+									alt="foto alumno fran"
 								/>
 							</figure>
 						</li>

@@ -40,6 +40,14 @@ function App() {
 		foto: 'fotoLuciano.jpeg',
 	};
 
+	const alumnoF = {
+		nombre: 'Francisco Miguel',
+		apellido: 'Palacios',
+		legajo: 61024,
+		github: 'https://github.com/260IQ',
+		foto: 'franfran.jpeg',
+	};
+
 	return (
 		<div>
 			<PaginaPrincipal
@@ -48,6 +56,7 @@ function App() {
 				alumnoc={alumnoc}
 				alumnoN={alumnoN}
 				alumnoLu={alumnoLu}
+				alumnoF={alumnoF}
 			/>
 		</div>
 	);
