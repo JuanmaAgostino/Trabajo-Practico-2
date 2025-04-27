@@ -30,6 +30,7 @@ body {
 
 .tarjeta:hover {
     transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .tarjeta ul {
@@ -39,7 +40,8 @@ body {
 }
 
 .tarjeta li {
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    line-height: 1.5;
 }
 
 .tarjetad li:first-child {
