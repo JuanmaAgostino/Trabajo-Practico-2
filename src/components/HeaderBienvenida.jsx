@@ -1,10 +1,10 @@
 import React from 'react';
 import '../style/Header.css';
 
-const Header = ({ onLogout }) => {
+const HeaderBienvenida = ({ onLogout }) => {
   return (
     <header className="headerB">
-      <span class="iconoB">🔒</span>
+      <span className="iconoB">🔒</span>
       <h1>Bienvenido</h1>
       <button className="logout-boton" onClick={onLogout}>
         Cerrar Sesión
@@ -13,4 +13,4 @@ const Header = ({ onLogout }) => {
   );
 };
 
-export default Header;
+export default HeaderBienvenida;

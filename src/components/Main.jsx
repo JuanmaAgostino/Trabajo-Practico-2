@@ -3,32 +3,17 @@ import Formulario from './Formulario';
 import '../style/Main.css';
 import Integrantes from './Integrantes';
 
-const Main = ({
-	usuarioVerificacion,
-	Verificado,
-	alumno1,
-	alumnoL,
-	alumnoc,
-	alumnoN,
-	alumnoLu,
-	alumnoF
-}) => {
-	console.log(usuarioVerificacion);
-	console.log(Verificado);
+const Main = ({ sesionVerificada, verificarSesion, alumnos, agregarAlumno }) => {
 	return (
 		<div>
 			<main>
-				{usuarioVerificacion ? (
+				{sesionVerificada ? (
 					<Integrantes
-						alumno1={alumno1}
-						alumnoL={alumnoL}
-						alumnoc={alumnoc}
-						alumnoN={alumnoN}
-						alumnoLu={alumnoLu}
-						alumnoF={alumnoF}
+						alumnos={alumnos}
+						agregarAlumno={agregarAlumno}
 					/>
 				) : (
-					<Formulario Verificado={Verificado} />
+					<Formulario verificarSesion={verificarSesion} />
 				)}
 			</main>
 		</div>

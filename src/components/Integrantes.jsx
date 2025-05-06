@@ -1,126 +1,58 @@
-import React from 'react';
-import css from '../style/Integrantes.css';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import '../style/Integrantes.css';
 
-const Integrantes = ({ alumno1, alumnoL, alumnoc, alumnoN, alumnoLu, alumnoF}) => {
-	return (
-		<body>
-			<div className="contenedor">
-				<div className="tarjeta">
-					<ul>
-						<li>{alumno1.nombre}</li>
-						<li>{alumno1.apellido}</li>
-						<li>{alumno1.legajo}</li>
-						<li>
-							<a href={alumno1.github}>Github</a>
-						</li>
-						<li>
-							<figure>
-								<img
-									src={require(`../resources/${alumno1.foto}`)}
-									alt="foto alumno Juanma"
-								/>
-							</figure>
-						</li>
-					</ul>
-				</div>
+const Integrantes = ({ alumnos }) => {
+    const navegar = useNavigate();
+    const [cacheImagenes, setCacheImagenes] = useState({});
 
-				<div className="tarjeta">
-					<ul>
-						<li>{alumnoLu.nombre}</li>
-						<li>{alumnoLu.apellido}</li>
-						<li>{alumnoLu.legajo}</li>
-						<li>
-							<a href={alumnoLu.github}>Github</a>
-						</li>
-						<li>
-							<figure>
-								<img
-									src={require(`../resources/${alumnoLu.foto}`)}
-									alt="foto alumno Luciano"
-								/>
-							</figure>
-						</li>
-					</ul>
-				</div>
+    useEffect(() => {
+        const cache = {};
+        alumnos.forEach((alumno) => {
+            if (alumno.foto) {
+                const imagen = new Image();
+                imagen.src = typeof alumno.foto === 'string' && !alumno.foto.startsWith('data:')
+                    ? require(`../resources/${alumno.foto}`)
+                    : alumno.foto;
+                imagen.onerror = () => (cache[alumno.foto] = require('../resources/default.jpg'));
+                cache[alumno.foto] = imagen.src || require('../resources/default.jpg');
+            }
+        });
+        setCacheImagenes(cache);
+    }, [alumnos]);
 
+    const manejarAgregarAlumno = () => {
+        navegar('/agregar-alumno');
+    };
 
-				<div className="tarjeta">
-					<ul>
-						<li>{alumnoL.nombre}</li>
-						<li>{alumnoL.apellido}</li>
-						<li>{alumnoL.legajo}</li>
-						<li>
-							<a href={alumnoL.github}>Github</a>
-						</li>
-						<li>
-							<figure>
-								<img
-									src={require(`../resources/${alumnoL.foto}`)}
-									alt="foto alumno Lucas"
-								/>
-							</figure>
-						</li>
-					</ul>
-				</div>
-
-				<div className="tarjeta">
-					<ul>
-						<li>{alumnoc.nombre}</li>
-						<li>{alumnoc.apellido}</li>
-						<li>{alumnoc.legajo}</li>
-						<li>
-							<a href={alumnoc.github}>Github</a>
-						</li>
-						<li>
-							<figure>
-								<img
-									src={require(`../resources/${alumnoc.foto}`)}
-									alt="foto alumno christian"
-								/>
-							</figure>
-						</li>
-					</ul>
-				</div>
-
-				<div className="tarjeta">
-					<ul>
-						<li>{alumnoN.nombre}</li>
-						<li>{alumnoN.apellido}</li>
-						<li>{alumnoN.legajo}</li>
-						<li>
-							<a href={alumnoN.github}>Github</a>
-						</li>
-						<li>
-							<figure>
-								<img
-									src={require(`../resources/${alumnoN.foto}`)}
-									alt="foto alumno Nicolas"
-								/>
-							</figure>
-						</li>
-					</ul>
-				</div>
-				<div className="tarjeta">
-					<ul>
-						<li>{alumnoF.nombre}</li>
-						<li>{alumnoF.apellido}</li>
-						<li>{alumnoF.legajo}</li>
-						<li>
-							<a href={alumnoF.github}>Github</a>
-						</li>
-						<li>
-							<figure>
-								<img
-									src={require(`../resources/${alumnoF.foto}`)}
-									alt="foto alumno fran"
-								/>
-							</figure>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</body>
-	);
+    return (
+        <div className="contenedor">
+            {alumnos.map((alumno, indice) => (
+                <div className="tarjeta" key={indice}>
+                    <ul>
+                        <li>{alumno.nombre}</li>
+                        <li>{alumno.apellido}</li>
+                        <li>{alumno.legajo}</li>
+                        <li>
+                            <a href={alumno.github}>Github</a>
+                        </li>
+                        <li>
+                            <figure>
+                                <img
+                                    src={cacheImagenes[alumno.foto] || require('../resources/default.jpg')}
+                                    alt={`foto alumno ${alumno.nombre}`}
+                                    style={{ display: 'block' }}
+                                />
+                            </figure>
+                        </li>
+                    </ul>
+                </div>
+            ))}
+            <button className="boton-agregar" onClick={manejarAgregarAlumno}>
+                Agregar Alumno
+            </button>
+        </div>
+    );
 };
 
 export default Integrantes;

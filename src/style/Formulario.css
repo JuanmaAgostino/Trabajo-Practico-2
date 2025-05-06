@@ -8,13 +8,13 @@ main {
   padding-bottom: 80px;
 }
 
-.login-contenedor {
+.contenedor-inicio-sesion {
   width: 100%;
   max-width: 400px;
   padding: 20px;
 }
 
-.login-formulario {
+.formulario-inicio-sesion {
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -24,7 +24,7 @@ main {
   font-family: 'Arial', sans-serif;
 }
 
-.login-formulario label {
+.formulario-inicio-sesion label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
@@ -32,7 +32,7 @@ main {
   font-size: 1.1em;
 }
 
-.login-formulario input {
+.formulario-inicio-sesion input {
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;
@@ -42,13 +42,13 @@ main {
   font-family: 'Arial', sans-serif;
 }
 
-.login-formulario input:focus {
+.formulario-inicio-sesion input:focus {
   outline: none;
   border-color: #0056b3;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
 }
 
-.login-formulario button {
+.formulario-inicio-sesion button {
   background-color: #007bff;
   color: white;
   padding: 10px 20px;
@@ -60,26 +60,26 @@ main {
   transition: background-color 0.3s ease;
 }
 
-.login-formulario button:hover {
+.formulario-inicio-sesion button:hover {
   background-color: #0056b3;
 }
 
-.error-message {
+.mensaje-error {
   color: #dc3545;
   font-size: 0.9em;
   margin-bottom: 15px;
 }
 
 @media (max-width: 480px) {
-  .login-contenedor {
+  .contenedor-inicio-sesion {
     padding: 10px;
   }
 
-  .login-formulario {
+  .formulario-inicio-sesion {
     padding: 15px;
   }
 
-  .login-formulario button {
+  .formulario-inicio-sesion button {
     padding: 8px 16px;
     font-size: 0.9em;
   }

@@ -1,36 +1,52 @@
 import React, { useState } from 'react';
 import '../style/Formulario.css';
 
-const Formulario = ({ Verificado }) => {
+const Formulario = ({ verificarSesion }) => {
     const [usuario, setUsuario] = useState('');
-    const [contraseña, setContraseña] = useState('');
-    const [error, setError] = useState('');
+    const [contrasena, setContrasena] = useState('');
 
-    const handleSubmit = (e) => {
+    const manejarCambioUsuario = (e) => {
+        setUsuario(e.target.value);
+    };
+
+    const manejarCambioContrasena = (e) => {
+        setContrasena(e.target.value);
+    };
+
+    const manejarEnvio = (e) => {
         e.preventDefault();
-
-        if (usuario === 'admin' && contraseña === '123456') {
-            Verificado();
+        // Lógica de validación aquí
+        if (usuario && contrasena) {
+            verificarSesion(); // Cambiado de Verificado a verificarSesion
         } else {
-            setError('Usuario o contraseña incorrectos');
+            alert('Por favor, complete todos los campos.');
         }
     };
 
     return (
-        <main>
-            <div class="login-contenedor">
-                <form class="login-formulario" onSubmit={handleSubmit}>
+        <div className="contenedor-inicio-sesion">
+            <form className="formulario-inicio-sesion" onSubmit={manejarEnvio}>
+                <div className="grupo-formulario">
                     <label>Usuario:</label>
-                    <input type="text" value={usuario} onChange={(e) => setUsuario(e.target.value)} required />
-
+                    <input
+                        type="text"
+                        value={usuario}
+                        onChange={manejarCambioUsuario}
+                        required
+                    />
+                </div>
+                <div className="grupo-formulario">
                     <label>Contraseña:</label>
-                    <input type="password" value={contraseña} onChange={(e) => setContraseña(e.target.value)} required />
-
-                    {error && <p className="error-message">{error}</p>}
-                    <button type="submit">Ingresar</button>
-                </form>
-            </div>
-        </main>
+                    <input
+                        type="password"
+                        value={contrasena}
+                        onChange={manejarCambioContrasena}
+                        required
+                    />
+                </div>
+                <button type="submit">Iniciar Sesión</button>
+            </form>
+        </div>
     );
 };
 
